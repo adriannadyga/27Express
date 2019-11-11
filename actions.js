@@ -5,11 +5,12 @@
 // ocenianie +1 / -1 (kciuk w górę/kciuk w dół) komentarza
 import uuid from uuid;
 
-const ADD_COMMENT = 'ADD_COMMENT';
-const REMOVE_COMMENT = 'REMOVE_COMMENT';
-const EDIT_COMMENT = 'EDIT_COMMENT';
-const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
-const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
+export const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
 
 function addComment(text) {
     return {
@@ -47,22 +48,18 @@ const boundEditComment = (text, id) => dispatch(editComment(text, id));
 
 boundEditComment('nowy komentarz edytowany');
 
-function thumbUpComment(id, ups) {
+function thumbUpComment(id, votes) {
     return {
         type: THUMB_UP_COMMENT,
         id,
-        ups: ++ups
+        votes: ++votes
     }
 }
 
-const boundThumbUpComment = (id, ups) => dispatch(thumbUpComment(id, ups));
-
-function thumbDownComment(id, down) {
+function thumbDownComment(id, votes) {
     return {
         type: THUMB_DOWN_COMMENT,
         id,
-        down: ++down
+        votes: ++votes
     }
 }
-
-const boundThumbDownComment = (id, down) => dispatch(thumbDownComment(id, down));
